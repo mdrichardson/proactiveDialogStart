@@ -82,8 +82,6 @@ server.get('/api/notify', async (req, res) => {
         await adapter.continueConversation(conversationReference, async turnContext => {
             // If you encounter permission-related errors when sending this message, see
             // https://aka.ms/BotTrustServiceUrl
-            await conversationState.saveChanges(turnContext, false);
-            await userState.saveChanges(turnContext, false);
             await turnContext.sendActivity('proactive hello');
             const dialogContext = await dialogs.createContext(turnContext);
             await dialogContext.cancelAllDialogs();
